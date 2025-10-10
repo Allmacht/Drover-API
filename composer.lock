@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "499ff201ed8537cc67e26201ae6954a0",
+    "content-hash": "d16e12ea48b7ec2090285e6a86ac9ef1",
     "packages": [
         {
             "name": "brick/math",
@@ -6023,6 +6023,55 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "yntech/domain-forge",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Allmacht/domain-forge.git",
+                "reference": "325d332b58162bbea0dc5f2b0bc746e2abad874c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Allmacht/domain-forge/zipball/325d332b58162bbea0dc5f2b0bc746e2abad874c",
+                "reference": "325d332b58162bbea0dc5f2b0bc746e2abad874c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^12.2",
+                "illuminate/support": "^12.2",
+                "php": "^8.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yntech\\DomainForge\\Providers\\DomainForgeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yntech\\DomainForge\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ulises Jacob",
+                    "email": "ulises.jacob.cr@gmail.com"
+                }
+            ],
+            "description": "Hexagonal architecture generator for Laravel. Provides Artisan commands for structuring domains following the principles of DDD and Screaming Architecture.",
+            "support": {
+                "issues": "https://github.com/Allmacht/domain-forge/issues",
+                "source": "https://github.com/Allmacht/domain-forge/tree/v2.0.0"
+            },
+            "time": "2025-10-08T22:28:37+00:00"
         }
     ],
     "packages-dev": [
