@@ -2,11 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use Src\Shared\Domain\Contracts\TransactionManagerInterface;
 use Src\Shared\Infrastructure\Persistence\Eloquent\LaravelTransactionManager;
-
-
-use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {

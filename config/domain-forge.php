@@ -30,14 +30,14 @@ return [
         'commands' => true,
         'queries' => true,
         'services' => true,
-        
+
         // Domain Layer
         'entities' => true,
         'repositories' => true,
         'value_objects' => true,
         'events' => true,
         'exceptions' => true,
-        
+
         // Infrastructure Layer
         'controllers' => true,
         'repositories_impl' => true,
