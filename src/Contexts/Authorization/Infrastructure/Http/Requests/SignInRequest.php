@@ -1,10 +1,10 @@
 <?php
 
-namespace Src\Contexts\User\Infrastructure\Http\Requests;
+namespace Src\Contexts\Authorization\Infrastructure\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterUserRequest extends FormRequest
+class SignInRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,8 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'names' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8|confirmed',
-            'phone' => 'nullable|string|max:20',
-            'country_id' => 'required|string|',
+            'password' => 'required|string|min:8',
         ];
     }
 }

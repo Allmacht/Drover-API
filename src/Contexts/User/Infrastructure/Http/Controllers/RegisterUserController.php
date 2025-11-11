@@ -14,7 +14,7 @@ final class RegisterUserController
         private RegisterUserUseCase $registerUserUseCase
     ) {}
 
-    public function __invoke(RegisterUserRequest $request)
+    public function __invoke(RegisterUserRequest $request): JsonResponse
     {
         try {
 

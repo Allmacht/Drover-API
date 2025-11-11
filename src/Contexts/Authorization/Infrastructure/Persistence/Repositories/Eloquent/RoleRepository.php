@@ -2,8 +2,8 @@
 
 namespace Src\Contexts\Authorization\Infrastructure\Persistence\Repositories\Eloquent;
 
-use Src\Contexts\Authorization\Domain\Contracts\RoleRepositoryContract;
 use App\Models\Role as EloquentRole;
+use Src\Contexts\Authorization\Domain\Contracts\RoleRepositoryContract;
 use Src\Contexts\Authorization\Domain\Entities\Role;
 use Src\Contexts\Authorization\Domain\ValueObjects\RoleSlug;
 

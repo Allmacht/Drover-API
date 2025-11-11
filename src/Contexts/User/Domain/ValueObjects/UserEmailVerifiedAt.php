@@ -4,16 +4,12 @@ namespace Src\Contexts\User\Domain\ValueObjects;
 
 final class UserEmailVerifiedAt
 {
-
     private function __construct(private ?string $value)
     {
         $this->validate(value: $value);
     }
 
-    private function validate(?string $value): void
-    {
-        
-    }
+    private function validate(?string $value): void {}
 
     public function value(): ?string
     {

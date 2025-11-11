@@ -13,7 +13,7 @@ final class UserEmail
 
     private function validate(string $value): void
     {
-        if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+        if (! filter_var($value, FILTER_VALIDATE_EMAIL)) {
             throw UserValidationException::invalidEmailFormat();
         }
     }

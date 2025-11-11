@@ -29,7 +29,7 @@ final class UserJsonApiMapper
             ],
 
             'links' => [
-                'self' => $baseUrl.'/api/users/'.$dto->id
+                'self' => $baseUrl.'/api/users/'.$dto->id,
             ],
         ];
     }

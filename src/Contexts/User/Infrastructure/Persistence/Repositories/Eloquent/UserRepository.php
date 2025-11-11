@@ -2,10 +2,10 @@
 
 namespace Src\Contexts\User\Infrastructure\Persistence\Repositories\Eloquent;
 
-use Src\Contexts\User\Domain\Contracts\UserRepositoryContract;
-use Src\Contexts\User\Domain\Entities\User;
 use App\Models\User as EloquentUser;
 use Src\Contexts\Authorization\Domain\ValueObjects\RoleId;
+use Src\Contexts\User\Domain\Contracts\UserRepositoryContract;
+use Src\Contexts\User\Domain\Entities\User;
 use Src\Contexts\User\Domain\ValueObjects\UserEmail;
 
 class UserRepository implements UserRepositoryContract
@@ -17,7 +17,7 @@ class UserRepository implements UserRepositoryContract
 
     public function persist(User $user): User
     {
-        $eloquentUser = new EloquentUser();
+        $eloquentUser = new EloquentUser;
 
         $eloquentUser->id = $user->id()->value();
         $eloquentUser->names = $user->names()->value();

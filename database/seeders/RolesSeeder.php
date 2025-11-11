@@ -38,7 +38,7 @@ class RolesSeeder extends Seeder
             'stores.view_own',
             'stores.manage_own',
             'settings.view_own',
-            'settings.edit_own'
+            'settings.edit_own',
         ])->pluck('id')->toArray();
         $admin->permissions()->sync($adminPermissions);
     }

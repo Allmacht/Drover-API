@@ -4,7 +4,4 @@ namespace Src\Contexts\Authorization\Infrastructure\Persistence\Repositories\Elo
 
 use Src\Contexts\Authorization\Domain\Contracts\PermissionRepositoryContract;
 
-class PermissionRepository implements PermissionRepositoryContract
-{
-    
-}
+class PermissionRepository implements PermissionRepositoryContract {}

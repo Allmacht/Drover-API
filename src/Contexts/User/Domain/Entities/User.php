@@ -2,14 +2,14 @@
 
 namespace Src\Contexts\User\Domain\Entities;
 
-use Src\Contexts\User\Domain\ValueObjects\UserId;
-use Src\Contexts\User\Domain\ValueObjects\UserNames;
-use Src\Contexts\User\Domain\ValueObjects\UserPhone;
 use Src\Contexts\User\Domain\ValueObjects\UserAvatar;
 use Src\Contexts\User\Domain\ValueObjects\UserCountryId;
 use Src\Contexts\User\Domain\ValueObjects\UserEmail;
-use Src\Contexts\User\Domain\ValueObjects\UserPassword;
 use Src\Contexts\User\Domain\ValueObjects\UserEmailVerifiedAt;
+use Src\Contexts\User\Domain\ValueObjects\UserId;
+use Src\Contexts\User\Domain\ValueObjects\UserNames;
+use Src\Contexts\User\Domain\ValueObjects\UserPassword;
+use Src\Contexts\User\Domain\ValueObjects\UserPhone;
 use Src\Contexts\User\Domain\ValueObjects\UserPhoneVerifiedAt;
 
 final readonly class User

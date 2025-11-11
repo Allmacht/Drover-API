@@ -116,8 +116,7 @@ class PermissionsSeeder extends Seeder
                 'group' => 'stores',
             ],
 
-
-            //permissions for client stores
+            // permissions for client stores
             [
                 'name' => 'view my stores',
                 'slug' => 'stores.view_own',
