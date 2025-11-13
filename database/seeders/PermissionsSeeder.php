@@ -118,6 +118,30 @@ class PermissionsSeeder extends Seeder
 
             // permissions for client stores
             [
+                'name' => 'edit my user',
+                'slug' => 'users.edit_own',
+                'description' => 'Can edit own user',
+                'group' => 'users'
+            ],
+            [
+                'name' => 'view my subordinates',
+                'slug' => 'users.view_subordinates',
+                'description' => 'Can view subordinates',
+                'group' => 'users'
+            ],
+            [
+                'name' => 'view my roles',
+                'slug' => 'roles.view_own',
+                'description' => 'Can view own roles',
+                'group' => 'roles'
+            ],
+            [
+                'name' => 'edit subordinates roles',
+                'slug' => 'roles.edit_subordinates',
+                'description' => 'Can edit subordinates roles',
+                'group' => 'roles'
+            ],
+            [
                 'name' => 'view my stores',
                 'slug' => 'stores.view_own',
                 'description' => 'Can view own stores',
