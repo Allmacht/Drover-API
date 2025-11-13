@@ -4,12 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use DateTimeInterface;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\NewAccessToken;
 
@@ -61,6 +62,11 @@ class User extends Authenticatable
         )->withTimestamps();
     }
 
+    public function getPermissions(): array
+    {
+        return $this->roles->load('permissions')->pluck('permissions')->flatten()->pluck('slug')->toArray();
+    }
+
     public function hasPermission(string $permissionSlug): bool
     {
         return $this->roles()
@@ -78,6 +84,11 @@ class User extends Authenticatable
     public function hasAnyRole(array $roleSlugs): bool
     {
         return $this->roles()->whereIn('slug', $roleSlugs)->exists();
+    }
+
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'country_id');
     }
 
     public function createToken(string $name, array $abilities = ['*'], ?DateTimeInterface $expiresAt = null)

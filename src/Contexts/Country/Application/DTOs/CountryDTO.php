@@ -49,4 +49,27 @@ final class CountryDTO
             flag: $country->flag->value()
         );
     }
+
+    public static function fromPrimitives(
+        string $id,
+        string $name,
+        string $code,
+        string $currency,
+        string $currency_symbol,
+        string $phone_code,
+        string $phone_pattern,
+        ?string $flag
+    ): self
+    {
+        return new self(
+            id: $id,
+            name: $name,
+            code: $code,
+            currency: $currency,
+            currency_symbol: $currency_symbol,
+            phone_code: $phone_code,
+            phone_pattern: $phone_pattern,
+            flag: $flag
+        );
+    }
 }

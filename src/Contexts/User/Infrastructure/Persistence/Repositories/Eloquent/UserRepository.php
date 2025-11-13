@@ -7,6 +7,7 @@ use Src\Contexts\Authorization\Domain\ValueObjects\RoleId;
 use Src\Contexts\User\Domain\Contracts\UserRepositoryContract;
 use Src\Contexts\User\Domain\Entities\User;
 use Src\Contexts\User\Domain\ValueObjects\UserEmail;
+use Src\Contexts\User\Domain\ValueObjects\UserId;
 
 class UserRepository implements UserRepositoryContract
 {
@@ -39,6 +40,54 @@ class UserRepository implements UserRepositoryContract
         $user = EloquentUser::find($userId);
 
         $user->roles()->syncWithoutDetaching([$roleId->value()]);
+    }
+
+    public function findByEmail(UserEmail $email): ?User
+    {
+        $eloquentUser = EloquentUser::where('email', $email->value())->sole();
+
+        return $eloquentUser ? $this->mapToDomainEntity(eloquentUser: $eloquentUser) : null;
+    }
+
+    public function findCompleteById(UserId $userId): ?array
+    {
+        $eloquentUser = EloquentUser::with(['roles.permissions', 'country'])->find($userId->value());
+
+        return [
+            'id' => $eloquentUser->id,
+            'names' => $eloquentUser->names,
+            'phone' => $eloquentUser->phone,
+            'avatar' => $eloquentUser->avatar,
+            'country_id' => $eloquentUser->country_id,
+            'email' => $eloquentUser->email,
+            'email_verified_at' => $eloquentUser->email_verified_at,
+            'phone_verified_at' => $eloquentUser->phone_verified_at,
+            'country' => $eloquentUser->country ? [
+                'id' => $eloquentUser->country->id,
+                'name' => $eloquentUser->country->name,
+                'code' => $eloquentUser->country->code,
+                'currency' => $eloquentUser->country->currency,
+                'currency_symbol' => $eloquentUser->country->currency_symbol,
+                'phone_code' => $eloquentUser->country->phone_code,
+                'phone_pattern' => $eloquentUser->country->phone_pattern,
+                'flag' => $eloquentUser->country->flag
+            ] : null,
+            'roles' => $eloquentUser->roles->map(function ($role) {
+                return [
+                    'id' => $role->id,
+                    'name' => $role->name,
+                    'slug' => $role->slug,
+                    'level' => $role->level,
+                    'description' => $role->description,
+                    'permissions' => $role->permissions->map(function ($permission) {
+                        return [
+                            'slug' => $permission->slug,
+                            'description' => $permission->description,
+                        ];
+                    })->toArray()
+                ];
+            })->toArray()
+        ];
     }
 
     private function mapToDomainEntity(EloquentUser $eloquentUser): User

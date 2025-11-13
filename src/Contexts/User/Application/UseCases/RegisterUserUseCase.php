@@ -29,13 +29,14 @@ final class RegisterUserUseCase
     /**
      * Register a new user with the given credentials and assign them the specified role.
      *
-     * @param string $names The user's full name.
-     * @param string $email The user's email address.
-     * @param string $password The user's plain text password.
-     * @param string $phone The user's phone number.
-     * @param string $country_id The user's country ID.
-     * @param string $role The role to assign to the user (default: 'admin').
+     * @param  string  $names  The user's full name.
+     * @param  string  $email  The user's email address.
+     * @param  string  $password  The user's plain text password.
+     * @param  string  $phone  The user's phone number.
+     * @param  string  $country_id  The user's country ID.
+     * @param  string  $role  The role to assign to the user (default: 'admin').
      * @return UserDTO The newly registered user.
+     *
      * @throws UserValidationException If the email address is already in use.
      */
     public function __invoke(string $names, string $email, string $password, string $phone, string $country_id, string $role = 'admin'): UserDTO
@@ -66,7 +67,7 @@ final class RegisterUserUseCase
             $this->userRepository->assignRole(userId: $new_user->id()->value(), roleId: $role->id());
 
             if ($role->slug()->value() !== 'admin') {
-                //todo: asign user to admin store.
+                // todo: asign user to admin store.
             }
 
             return $new_user;
