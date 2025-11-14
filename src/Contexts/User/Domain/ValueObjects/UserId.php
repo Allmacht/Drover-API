@@ -20,7 +20,7 @@ final class UserId
 
     public static function generate(): self
     {
-        return new self(value: (string) Ulid::generate());
+        return new self(value: (string) strtolower(Ulid::generate()));
     }
 
     public static function fromString(string $value): self

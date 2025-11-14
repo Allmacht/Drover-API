@@ -29,8 +29,7 @@ final readonly class CompleteUserDTO
         ?string $phone_verified_at,
         ?array $countryData,
         array $rolesData
-    ): self
-    {
+    ): self {
         return new self(
             id: $id,
             names: $names,
@@ -47,8 +46,10 @@ final readonly class CompleteUserDTO
                 currency_symbol: $countryData['currency_symbol'],
                 phone_code: $countryData['phone_code'],
                 phone_pattern: $countryData['phone_pattern'],
+                timezone: $countryData['timezone'],
+                locale: $countryData['locale'],
                 flag: $countryData['flag']),
-            roles: array_map (fn($role) => RoleWithPermissionsDTO::fromPrimitives(
+            roles: array_map(fn ($role) => RoleWithPermissionsDTO::fromPrimitives(
                 id: $role['id'],
                 name: $role['name'],
                 slug: $role['slug'],

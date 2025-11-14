@@ -70,7 +70,9 @@ class UserRepository implements UserRepositoryContract
                 'currency_symbol' => $eloquentUser->country->currency_symbol,
                 'phone_code' => $eloquentUser->country->phone_code,
                 'phone_pattern' => $eloquentUser->country->phone_pattern,
-                'flag' => $eloquentUser->country->flag
+                'timezone' => $eloquentUser->country->timezone,
+                'locale' => $eloquentUser->country->locale,
+                'flag' => $eloquentUser->country->flag,
             ] : null,
             'roles' => $eloquentUser->roles->map(function ($role) {
                 return [
@@ -84,9 +86,9 @@ class UserRepository implements UserRepositoryContract
                             'slug' => $permission->slug,
                             'description' => $permission->description,
                         ];
-                    })->toArray()
+                    })->toArray(),
                 ];
-            })->toArray()
+            })->toArray(),
         ];
     }
 

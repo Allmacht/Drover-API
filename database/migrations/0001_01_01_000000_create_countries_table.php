@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('phone_code');
             $table->string('phone_pattern');
             $table->string('flag');
+            $table->string('timezone')->default('UTC');
+            $table->string('locale')->default('en');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

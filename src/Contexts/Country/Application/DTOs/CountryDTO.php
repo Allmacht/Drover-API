@@ -27,6 +27,8 @@ final class CountryDTO
         public readonly string $currency_symbol,
         public readonly string $phone_code,
         public readonly string $phone_pattern,
+        public readonly string $locale,
+        public readonly string $timezone,
         public readonly string $flag
     ) {}
 
@@ -46,6 +48,8 @@ final class CountryDTO
             currency_symbol: $country->currency_symbol->value(),
             phone_code: $country->phone_code->value(),
             phone_pattern: $country->phone_pattern->value(),
+            timezone: $country->timezone->value(),
+            locale: $country->locale->value(),
             flag: $country->flag->value()
         );
     }
@@ -58,9 +62,10 @@ final class CountryDTO
         string $currency_symbol,
         string $phone_code,
         string $phone_pattern,
+        string $timezone,
+        string $locale,
         ?string $flag
-    ): self
-    {
+    ): self {
         return new self(
             id: $id,
             name: $name,
@@ -69,6 +74,8 @@ final class CountryDTO
             currency_symbol: $currency_symbol,
             phone_code: $phone_code,
             phone_pattern: $phone_pattern,
+            timezone: $timezone,
+            locale: $locale,
             flag: $flag
         );
     }

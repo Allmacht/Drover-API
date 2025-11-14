@@ -27,9 +27,8 @@ class RoleWithPermissionsDTO
             slug: $slug,
             level: $level,
             description: $description,
-            permissions: array_map(fn ($permission): array =>
-                ["permission" => $permission["slug"],
-                "description" => $permission["description"]
+            permissions: array_map(fn ($permission): array => ['permission' => $permission['slug'],
+                'description' => $permission['description'],
             ], $permissions),
         );
     }

@@ -28,6 +28,8 @@ final class CountryJsonApiMapper
                 'currency_symbol' => $dto->currency_symbol,
                 'phone_code' => $dto->phone_code,
                 'phone_pattern' => $dto->phone_pattern,
+                'timezone' => $dto->timezone,
+                'locale' => $dto->locale,
                 'flag' => $dto->flag,
             ],
 

@@ -10,9 +10,11 @@ use Src\Contexts\Country\Domain\ValueObjects\CountryCurrency;
 use Src\Contexts\Country\Domain\ValueObjects\CountryCurrencySymbol;
 use Src\Contexts\Country\Domain\ValueObjects\CountryFlag;
 use Src\Contexts\Country\Domain\ValueObjects\CountryId;
+use Src\Contexts\Country\Domain\ValueObjects\CountryLocale;
 use Src\Contexts\Country\Domain\ValueObjects\CountryName;
 use Src\Contexts\Country\Domain\ValueObjects\CountryPhoneCode;
 use Src\Contexts\Country\Domain\ValueObjects\CountryPhonePattern;
+use Src\Contexts\Country\Domain\ValueObjects\CountryTimezone;
 
 class CountryRepository implements CountryRepositoryContract
 {
@@ -32,6 +34,8 @@ class CountryRepository implements CountryRepositoryContract
             currency_symbol: new CountryCurrencySymbol(value: $model->currency_symbol),
             phone_code: new CountryPhoneCode(value: $model->phone_code),
             phone_pattern: new CountryPhonePattern(value: $model->phone_pattern),
+            timezone: CountryTimezone::fromString(value: $model->timezone),
+            locale: CountryLocale::fromString(value: $model->locale),
             flag: new CountryFlag(value: $model->flag)
         );
     }

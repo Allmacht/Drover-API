@@ -121,25 +121,25 @@ class PermissionsSeeder extends Seeder
                 'name' => 'edit my user',
                 'slug' => 'users.edit_own',
                 'description' => 'Can edit own user',
-                'group' => 'users'
+                'group' => 'users',
             ],
             [
                 'name' => 'view my subordinates',
                 'slug' => 'users.view_subordinates',
                 'description' => 'Can view subordinates',
-                'group' => 'users'
+                'group' => 'users',
             ],
             [
                 'name' => 'view my roles',
                 'slug' => 'roles.view_own',
                 'description' => 'Can view own roles',
-                'group' => 'roles'
+                'group' => 'roles',
             ],
             [
                 'name' => 'edit subordinates roles',
                 'slug' => 'roles.edit_subordinates',
                 'description' => 'Can edit subordinates roles',
-                'group' => 'roles'
+                'group' => 'roles',
             ],
             [
                 'name' => 'view my stores',

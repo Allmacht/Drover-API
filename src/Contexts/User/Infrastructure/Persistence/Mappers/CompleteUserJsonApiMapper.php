@@ -23,7 +23,7 @@ final class CompleteUserJsonApiMapper
 
                 'relationships' => [],
             ],
-            'included' => []
+            'included' => [],
         ];
 
         if ($user->country) {
@@ -44,22 +44,28 @@ final class CompleteUserJsonApiMapper
                     'name' => $user->country->name,
                     'code' => $user->country->code,
                     'flag' => $user->country->flag,
-                ]
+                    'currency' => $user->country->currency,
+                    'currency_symbol' => $user->country->currency_symbol,
+                    'phone_code' => $user->country->phone_code,
+                    'phone_pattern' => $user->country->phone_pattern,
+                    'timezone' => $user->country->timezone,
+                    'locale' => $user->country->locale,
+                ],
             ];
         }
 
         if (! empty($user->roles)) {
             $response['data']['relationships']['roles'] = [
-                'data' => array_map( fn($role) => [
+                'data' => array_map(fn ($role) => [
                     'type' => 'roles',
-                    'id' => $role->id
+                    'id' => $role->id,
                 ],
                     $user->roles
                 ),
 
                 'links' => [
-                    'related' => $baseUrl . '/api/users/' . $user->id . '/roles'
-                ]
+                    'related' => $baseUrl.'/api/users/'.$user->id.'/roles',
+                ],
             ];
 
             foreach ($user->roles as $role) {
@@ -71,16 +77,15 @@ final class CompleteUserJsonApiMapper
                         'slug' => $role->slug,
                         'level' => $role->level,
                         'description' => $role->description,
-                        'permissions' => $role->permissions
-                    ]
+                        'permissions' => $role->permissions,
+                    ],
                 ];
             }
         }
 
         $response['links'] = [
-            'self' => $baseUrl . '/api/users/me'
+            'self' => $baseUrl.'/api/users/me',
         ];
-
 
         return $response;
     }
