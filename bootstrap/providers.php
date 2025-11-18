@@ -7,4 +7,5 @@ return [
     Src\Contexts\Authorization\Infrastructure\AuthorizationServiceProvider::class,
     Src\Contexts\User\Infrastructure\UserServiceProvider::class,
     Src\Contexts\Company\Infrastructure\CompanyServiceProvider::class,
+    Src\Contexts\Module\Infrastructure\ModuleServiceProvider::class,
 ];
