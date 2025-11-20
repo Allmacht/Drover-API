@@ -40,8 +40,7 @@ final readonly class Module
         private ModuleBannerUrl $banner_url,
         private ModuleFeatures $features,
         private ModuleMetadata $metadata
-    ) {
-    }
+    ) {}
 
     public function id(): ModuleId
     {
@@ -63,7 +62,7 @@ final readonly class Module
         return $this->description;
     }
 
-    public function shortDescription(): ModuleShortDescription
+    public function short_description(): ModuleShortDescription
     {
         return $this->short_description;
     }
@@ -73,32 +72,32 @@ final readonly class Module
         return $this->category;
     }
 
-    public function isRequired(): ModuleIsRequired
+    public function is_required(): ModuleIsRequired
     {
         return $this->is_required;
     }
 
-    public function isActive(): ModuleIsActive
+    public function is_active(): ModuleIsActive
     {
         return $this->is_active;
     }
 
-    public function isBeta(): ModuleIsBeta
+    public function is_beta(): ModuleIsBeta
     {
         return $this->is_beta;
     }
 
-    public function sortOrder(): ModuleSortOrder
+    public function sort_order(): ModuleSortOrder
     {
         return $this->sort_order;
     }
 
-    public function requiresModules(): ModuleRequiresModules
+    public function requires_modules(): ModuleRequiresModules
     {
         return $this->requires_modules;
     }
 
-    public function conflictsWith(): ModuleConflictsWith
+    public function conflicts_with(): ModuleConflictsWith
     {
         return $this->conflicts_with;
     }
@@ -113,7 +112,7 @@ final readonly class Module
         return $this->color;
     }
 
-    public function bannerUrl(): ModuleBannerUrl
+    public function banner_url(): ModuleBannerUrl
     {
         return $this->banner_url;
     }
@@ -182,7 +181,7 @@ final readonly class Module
         array $conflicts_with,
         string $icon,
         string $color,
-        string $banner_url,
+        ?string $banner_url,
         array $features,
         array $metadata
     ): self {

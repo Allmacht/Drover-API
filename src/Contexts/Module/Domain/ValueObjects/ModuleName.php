@@ -9,9 +9,7 @@ final class ModuleName
         $this->validate(value: $value);
     }
 
-    private function validate(string $value): void
-    {
-    }
+    private function validate(string $value): void {}
 
     public function value(): string
     {
