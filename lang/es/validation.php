@@ -9,4 +9,8 @@ return [
     'authorization_exception' => [
         'invalid_credentials' => 'Las credenciales no son correctas.',
     ],
+
+    'company_validation_exception' => [
+        'company_already_exists' => 'El nombre de la empresa ya está registrado.',
+    ]
 ];

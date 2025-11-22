@@ -1,0 +1,20 @@
+<?php
+
+namespace Src\Contexts\OnboardingSession\Domain\ValueObjects;
+
+final class OnboardingSessionCompanyId
+{
+    private function __construct(private string $value)
+    {
+    }
+
+    public static function fromString(string $value): self
+    {
+        return new self($value);
+    }
+
+    public function value(): string
+    {
+        return $this->value;
+    }
+}

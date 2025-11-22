@@ -43,6 +43,10 @@ class RolesSeeder extends Seeder
             'users.edit_own',
             'roles.view_own',
             'roles.edit_subordinates',
+            'companies.view_own',
+            'companies.manage_own',
+            'onboarding-sessions.view_own',
+            'onboarding-sessions.manage_own',
         ])->pluck('id')->toArray();
         $admin->permissions()->sync($adminPermissions);
     }

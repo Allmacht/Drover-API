@@ -115,6 +115,30 @@ class PermissionsSeeder extends Seeder
                 'description' => 'Can view all stores',
                 'group' => 'stores',
             ],
+            [
+                'name' => 'Manage All Companies',
+                'slug' => 'companies.manage_all',
+                'description' => 'Can manage all companies',
+                'group' => 'companies',
+            ],
+            [
+                'name' => 'View All Companies',
+                'slug' => 'companies.view_all',
+                'description' => 'Can view all companies',
+                'group' => 'companies',
+            ],
+            [
+                'name' => 'Manage All Onboarding Sessions',
+                'slug' => 'onboarding-sessions.manage_all',
+                'description' => 'Can manage all onboarding sessions',
+                'group' => 'onboarding-sessions',
+            ],
+            [
+                'name' => 'View All Onboarding Sessions',
+                'slug' => 'onboarding-sessions.view_all',
+                'description' => 'Can view all onboarding sessions',
+                'group' => 'onboarding-sessions',
+            ],
 
             // permissions for client stores
             [
@@ -148,7 +172,7 @@ class PermissionsSeeder extends Seeder
                 'group' => 'stores',
             ],
             [
-                'name' => 'manage all my stores',
+                'name' => 'manage own stores',
                 'slug' => 'stores.manage_own',
                 'description' => 'Can manage own stores',
                 'group' => 'stores',
@@ -164,6 +188,30 @@ class PermissionsSeeder extends Seeder
                 'slug' => 'settings.edit_own',
                 'description' => 'Can edit own settings',
                 'group' => 'settings',
+            ],
+            [
+                'name' => 'view my companies',
+                'slug' => 'companies.view_own',
+                'description' => 'Can view own companies',
+                'group' => 'companies',
+            ],
+            [
+                'name' => 'manage own companies',
+                'slug' => 'companies.manage_own',
+                'description' => 'Can manage own companies',
+                'group' => 'companies',
+            ],
+            [
+                'name' => 'view my onboarding sessions',
+                'slug' => 'onboarding-sessions.view_own',
+                'description' => 'Can view own onboarding sessions',
+                'group' => 'onboarding-sessions',
+            ],
+            [
+                'name' => 'manage own onboarding sessions',
+                'slug' => 'onboarding-sessions.manage_own',
+                'description' => 'Can manage own onboarding sessions',
+                'group' => 'onboarding-sessions',
             ],
         ];
 

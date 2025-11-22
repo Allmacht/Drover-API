@@ -54,14 +54,15 @@ final class Company
         private CompanyUpdatedAt $updated_at,
         private CompanyCreatedById $created_by_id,
         private CompanyUpdatedById $updated_by_id
-    ) {}
+    ) {
+    }
 
     public function id(): CompanyId
     {
         return $this->id;
     }
 
-    public function ownerId(): CompanyOwnerId
+    public function owner_id(): CompanyOwnerId
     {
         return $this->owner_id;
     }
@@ -71,7 +72,7 @@ final class Company
         return $this->name;
     }
 
-    public function legalName(): CompanyLegalName
+    public function legal_name(): CompanyLegalName
     {
         return $this->legal_name;
     }
@@ -81,27 +82,27 @@ final class Company
         return $this->slug;
     }
 
-    public function taxId(): CompanyTaxId
+    public function tax_id(): CompanyTaxId
     {
         return $this->tax_id;
     }
 
-    public function taxIdType(): CompanyTaxIdType
+    public function tax_id_type(): CompanyTaxIdType
     {
         return $this->tax_id_type;
     }
 
-    public function taxRegime(): CompanyTaxRegime
+    public function tax_regime(): CompanyTaxRegime
     {
         return $this->tax_regime;
     }
 
-    public function businessType(): CompanyBusinessType
+    public function business_type(): CompanyBusinessType
     {
         return $this->business_type;
     }
 
-    public function registrationNumber(): CompanyRegistrationNumber
+    public function registration_number(): CompanyRegistrationNumber
     {
         return $this->registration_number;
     }
@@ -111,12 +112,12 @@ final class Company
         return $this->website;
     }
 
-    public function billingEmail(): CompanyBillingEmail
+    public function billing_email(): CompanyBillingEmail
     {
         return $this->billing_email;
     }
 
-    public function billingPhone(): CompanyBillingPhone
+    public function billing_phone(): CompanyBillingPhone
     {
         return $this->billing_phone;
     }
@@ -131,17 +132,17 @@ final class Company
         return $this->status;
     }
 
-    public function logoUrl(): CompanyLogoUrl
+    public function logo_url(): CompanyLogoUrl
     {
         return $this->logo_url;
     }
 
-    public function primaryColor(): CompanyPrimaryColor
+    public function primary_color(): CompanyPrimaryColor
     {
         return $this->primary_color;
     }
 
-    public function secondaryColor(): CompanySecondaryColor
+    public function secondary_color(): CompanySecondaryColor
     {
         return $this->secondary_color;
     }
@@ -156,22 +157,22 @@ final class Company
         return $this->metadata;
     }
 
-    public function createdAt(): CompanyCreatedAt
+    public function created_at(): CompanyCreatedAt
     {
         return $this->created_at;
     }
 
-    public function updatedAt(): CompanyUpdatedAt
+    public function updated_at(): CompanyUpdatedAt
     {
         return $this->updated_at;
     }
 
-    public function createdBy(): CompanyCreatedById
+    public function created_by_id(): CompanyCreatedById
     {
         return $this->created_by_id;
     }
 
-    public function updatedBy(): CompanyUpdatedById
+    public function updated_by_id(): CompanyUpdatedById
     {
         return $this->updated_by_id;
     }
@@ -233,25 +234,25 @@ final class Company
         string $name,
         string $legal_name,
         string $slug,
-        string $tax_id,
-        string $tax_id_type,
-        string $tax_regime,
-        string $business_type,
-        string $registration_number,
-        string $website,
-        string $billing_email,
-        string $billing_phone,
-        string $size,
-        string $status,
-        string $logo_url,
-        string $primary_color,
-        string $secondary_color,
-        string $settings,
-        string $metadata,
-        string $created_at,
-        string $updated_at,
-        string $created_by_id,
-        string $updated_by_id
+        ?string $tax_id,
+        ?string $tax_id_type,
+        ?string $tax_regime,
+        ?string $business_type,
+        ?string $registration_number,
+        ?string $website,
+        ?string $billing_email,
+        ?string $billing_phone,
+        ?string $size,
+        ?string $status,
+        ?string $logo_url,
+        ?string $primary_color,
+        ?string $secondary_color,
+        ?array $settings,
+        ?array $metadata,
+        ?string $created_at,
+        ?string $updated_at,
+        ?string $created_by_id,
+        ?string $updated_by_id
     ): self {
         return new self(
             id: CompanyId::fromString($id),
@@ -272,8 +273,8 @@ final class Company
             logo_url: CompanyLogoUrl::fromString($logo_url),
             primary_color: CompanyPrimaryColor::fromString($primary_color),
             secondary_color: CompanySecondaryColor::fromString($secondary_color),
-            settings: CompanySettings::fromString($settings),
-            metadata: CompanyMetadata::fromString($metadata),
+            settings: CompanySettings::fromArray($settings),
+            metadata: CompanyMetadata::fromArray($metadata),
             created_at: CompanyCreatedAt::fromString($created_at),
             updated_at: CompanyUpdatedAt::fromString($updated_at),
             created_by_id: CompanyCreatedById::fromString($created_by_id),

@@ -4,7 +4,9 @@ namespace Src\Contexts\Company\Domain\ValueObjects;
 
 final class CompanySettings
 {
-    private function __construct(private array $value) {}
+    private function __construct(private array $value)
+    {
+    }
 
     public static function fromArray(array $value): self
     {

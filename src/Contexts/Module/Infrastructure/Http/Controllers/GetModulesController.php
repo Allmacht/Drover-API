@@ -11,8 +11,7 @@ final class GetModulesController
 {
     public function __construct(
         private readonly FindModulesUseCase $findModulesUseCase
-    ) {
-    }
+    ) {}
 
     public function __invoke(Request $request): Response
     {

@@ -8,4 +8,5 @@ return [
     Src\Contexts\User\Infrastructure\UserServiceProvider::class,
     Src\Contexts\Company\Infrastructure\CompanyServiceProvider::class,
     Src\Contexts\Module\Infrastructure\ModuleServiceProvider::class,
+    Src\Contexts\OnboardingSession\Infrastructure\OnboardingSessionServiceProvider::class,
 ];
