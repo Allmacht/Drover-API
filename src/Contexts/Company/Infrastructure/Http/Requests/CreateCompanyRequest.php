@@ -12,6 +12,7 @@ class CreateCompanyRequest extends FormRequest
     public function authorize(): bool
     {
         $user = $this->user();
+
         return $user->tokenCan('companies.manage_all') || $user->tokenCan('companies.manage_own');
     }
 
@@ -23,7 +24,7 @@ class CreateCompanyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255'
+            'name' => 'required|string|max:255',
         ];
     }
 }

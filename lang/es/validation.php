@@ -12,5 +12,5 @@ return [
 
     'company_validation_exception' => [
         'company_already_exists' => 'El nombre de la empresa ya está registrado.',
-    ]
+    ],
 ];

@@ -4,9 +4,7 @@ namespace Src\Contexts\Company\Domain\ValueObjects;
 
 final class CompanyTaxId
 {
-    private function __construct(private ?string $value)
-    {
-    }
+    private function __construct(private ?string $value) {}
 
     public static function fromString(?string $name): self
     {

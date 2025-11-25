@@ -54,8 +54,7 @@ final class Company
         private CompanyUpdatedAt $updated_at,
         private CompanyCreatedById $created_by_id,
         private CompanyUpdatedById $updated_by_id
-    ) {
-    }
+    ) {}
 
     public function id(): CompanyId
     {

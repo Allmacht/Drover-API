@@ -30,8 +30,7 @@ final class CompanyDTO
         public ?string $updated_at,
         public ?string $created_by_id,
         public ?string $updated_by_id,
-    ) {
-    }
+    ) {}
 
     public static function fromEntity(Company $company): self
     {

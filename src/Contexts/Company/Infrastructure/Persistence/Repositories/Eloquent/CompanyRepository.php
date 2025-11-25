@@ -82,5 +82,4 @@ class CompanyRepository implements CompanyRepositoryContract
             updated_by_id: $company->updated_by_id
         );
     }
-
 }

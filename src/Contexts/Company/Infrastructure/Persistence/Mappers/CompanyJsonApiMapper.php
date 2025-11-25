@@ -9,7 +9,7 @@ final class CompanyJsonApiMapper
     public static function toCollection(array $companiesDTO, string $baseUrl)
     {
         return [
-            'data' => array_map(fn(CompanyDTO $dto) => self::toResource($dto, $baseUrl), $companiesDTO),
+            'data' => array_map(fn (CompanyDTO $dto) => self::toResource($dto, $baseUrl), $companiesDTO),
         ];
     }
 
@@ -43,7 +43,7 @@ final class CompanyJsonApiMapper
                 'updated_by_id' => $dto->updated_by_id,
             ],
             'links' => [
-                'self' => $baseUrl . '/companies/' . $dto->id,
+                'self' => $baseUrl.'/companies/'.$dto->id,
             ],
         ];
     }

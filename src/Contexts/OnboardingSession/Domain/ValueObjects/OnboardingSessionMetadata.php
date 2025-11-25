@@ -9,9 +9,7 @@ final class OnboardingSessionMetadata
         $this->validate(value: $value);
     }
 
-    private function validate(array $value): void
-    {
-    }
+    private function validate(array $value): void {}
 
     public function value(): array
     {

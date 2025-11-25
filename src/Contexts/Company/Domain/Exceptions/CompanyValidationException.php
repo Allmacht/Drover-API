@@ -10,7 +10,7 @@ class CompanyValidationException extends BaseException
 
     public static function companyAlreadyExists(): self
     {
-        $exception = self::CODE . '.company_already_exists';
+        $exception = self::CODE.'.company_already_exists';
 
         return new self(
             code: 422,

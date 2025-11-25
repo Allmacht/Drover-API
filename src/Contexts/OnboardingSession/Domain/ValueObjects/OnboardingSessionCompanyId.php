@@ -4,9 +4,7 @@ namespace Src\Contexts\OnboardingSession\Domain\ValueObjects;
 
 final class OnboardingSessionCompanyId
 {
-    private function __construct(private string $value)
-    {
-    }
+    private function __construct(private string $value) {}
 
     public static function fromString(string $value): self
     {
