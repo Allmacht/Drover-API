@@ -3,7 +3,7 @@
 namespace Src\Contexts\User\Infrastructure\Http\Controllers;
 
 use App\Exceptions\BaseException;
-use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Src\Contexts\User\Application\UseCases\RegisterUserUseCase;
 use Src\Contexts\User\Infrastructure\Http\Requests\RegisterUserRequest;
 use Src\Contexts\User\Infrastructure\Persistence\Mappers\UserJsonApiMapper;
@@ -12,9 +12,10 @@ final class RegisterUserController
 {
     public function __construct(
         private RegisterUserUseCase $registerUserUseCase
-    ) {}
+    ) {
+    }
 
-    public function __invoke(RegisterUserRequest $request): JsonResponse
+    public function __invoke(RegisterUserRequest $request): Response
     {
         try {
 
@@ -28,7 +29,7 @@ final class RegisterUserController
 
             return response()->json(
                 UserJsonApiMapper::toResource($userDTO, $request->getSchemeAndHttpHost()),
-                JsonResponse::HTTP_CREATED
+                Response::HTTP_CREATED
             );
 
         } catch (BaseException $e) {

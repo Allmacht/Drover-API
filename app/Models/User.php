@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\NewAccessToken;
@@ -113,5 +115,28 @@ class User extends Authenticatable
             $tokenEntropy = Str::random(256),
             hash('crc32b', $tokenEntropy)
         );
+    }
+
+    public function ownedCompanies(): HasMany
+    {
+        return $this->hasMany(Company::class, 'owner_id');
+    }
+
+    public function memberCompanies(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Company::class,
+            'company_members',
+            'user_id',
+            'company_id'
+        )
+            ->withPivot(['role_id', 'status', 'invited_at', 'joined_at'])
+            ->withTimestamps()
+            ->wherePivot('status', 'active');
+    }
+
+    public function allCompanies(): Collection
+    {
+        return $this->ownedCompanies()->merge($this->memberCompanies());
     }
 }

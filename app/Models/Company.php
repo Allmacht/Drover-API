@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Company extends Model
 {
@@ -38,4 +40,27 @@ class Company extends Model
         'settings' => 'array',
         'metadata' => 'array',
     ];
+
+    public function members(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            User::class,
+            'company_members',
+            'company_id',
+            'user_id'
+        )
+            ->withPivot(['role_id', 'status', 'permission', 'invited_by_id', 'joined_at'])
+            ->withTimestamps()
+            ->wherePivot('status', 'active');
+    }
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
+
+    public function isMember(string $userId): bool
+    {
+        return $this->members()->where('user_id', $userId)->exists();
+    }
 }

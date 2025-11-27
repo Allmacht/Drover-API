@@ -5,8 +5,10 @@ namespace Src\Contexts\Company\Infrastructure\Persistence\Repositories\Eloquent;
 use App\Models\Company as EloquentModel;
 use Src\Contexts\Company\Domain\Contracts\CompanyRepositoryContract;
 use Src\Contexts\Company\Domain\Entities\Company;
+use Src\Contexts\Company\Domain\ValueObjects\CompanyId;
 use Src\Contexts\Company\Domain\ValueObjects\CompanyName;
 use Src\Contexts\Company\Domain\ValueObjects\CompanyOwnerId;
+use Src\Contexts\User\Domain\ValueObjects\UserId;
 
 class CompanyRepository implements CompanyRepositoryContract
 {
@@ -51,6 +53,76 @@ class CompanyRepository implements CompanyRepositoryContract
         );
 
         return $this->mapToDomainEntity(company: $model);
+    }
+
+    public function findOwnedByUser(UserId $user_id): array
+    {
+        return EloquentModel::where('owner_id', $user_id->value())
+            ->where('status', '!=', 'cancelled')
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->map(fn ($company) => $this->toArray($company, 'owner'))
+            ->toArray();
+    }
+
+    public function findMembershipsByUser(UserId $user_id): array
+    {
+        return EloquentModel::whereHas('members', function ($query) use ($user_id) {
+            $query->where('user_id', $user_id->value())
+                ->where('status', 'active');
+        })
+            ->where('status', '!=', 'cancelled')
+            ->with([
+                'members' => function ($query) use ($user_id) {
+                    $query->where('user_id', $user_id->value());
+                },
+            ])
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->map(fn ($company) => $this->toArray($company, 'member'))
+            ->toArray();
+    }
+
+    public function findAllByUser(UserId $user_id): array
+    {
+        $owned = $this->findOwnedByUser($user_id);
+        $memberships = $this->findMembershipsByUser($user_id);
+
+        return array_merge($owned, $memberships);
+    }
+
+    public function userHasAccess(UserId $user_id, CompanyId $company_id): bool
+    {
+        $company = EloquentModel::find($company_id->value());
+
+        if (! $company) {
+            return false;
+        }
+
+        return $company->hasAccess($user_id->value());
+    }
+
+    private function toArray(EloquentModel $company, string $relationship): array
+    {
+        $data = [
+            'id' => $company->id,
+            'name' => $company->name,
+            'slug' => $company->slug,
+            'status' => $company->status,
+            'subscription_status' => $company->subscription_status,
+            'relationship' => $relationship,
+            'created_at' => $company->created_at->toIso8601String(),
+        ];
+
+        if ($relationship === 'member' && $company->members->isNotEmpty()) {
+            $member = $company->members->first();
+            $data['membership'] = [
+                'role_id' => $member->pivot->role_id,
+                'joined_at' => $member->pivot->joined_at?->toIso8601String(),
+            ];
+        }
+
+        return $data;
     }
 
     private function mapToDomainEntity(EloquentModel $company): Company

@@ -13,8 +13,7 @@ final class CreateCompanyController
     public function __construct(
         private readonly CreateCompanyUseCase $companyUseCase,
         private readonly CompanyJsonApiMapper $companyJsonApiMapper
-    ) {
-    }
+    ) {}
 
     public function __invoke(CreateCompanyRequest $request): Response
     {
