@@ -13,4 +13,11 @@ return [
     'company_validation_exception' => [
         'company_already_exists' => 'El nombre de la empresa ya está registrado.',
     ],
+
+    'onboarding_session' => [
+        'application_exception' => [
+            'user_is_not_owner' => 'El usuario no es dueño de la empresa.',
+            'company_is_not_pending_setup' => 'La empresa no está en estado de configuración pendiente.',
+        ],
+    ],
 ];

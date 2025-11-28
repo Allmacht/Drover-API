@@ -23,6 +23,17 @@ class CompanyRepository implements CompanyRepositoryContract
         return null;
     }
 
+    public function findById(CompanyId $company_id): ?Company
+    {
+        $model = EloquentModel::find($company_id->value());
+
+        if ($model) {
+            return $this->mapToDomainEntity(company: $model);
+        }
+
+        return null;
+    }
+
     public function persist(Company $company): Company
     {
         $model = EloquentModel::create(
@@ -61,7 +72,7 @@ class CompanyRepository implements CompanyRepositoryContract
             ->where('status', '!=', 'cancelled')
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn ($company) => $this->toArray($company, 'owner'))
+            ->map(fn($company) => $this->toArray($company, 'owner'))
             ->toArray();
     }
 
@@ -79,7 +90,7 @@ class CompanyRepository implements CompanyRepositoryContract
             ])
             ->orderBy('created_at', 'desc')
             ->get()
-            ->map(fn ($company) => $this->toArray($company, 'member'))
+            ->map(fn($company) => $this->toArray($company, 'member'))
             ->toArray();
     }
 
@@ -95,7 +106,7 @@ class CompanyRepository implements CompanyRepositoryContract
     {
         $company = EloquentModel::find($company_id->value());
 
-        if (! $company) {
+        if (!$company) {
             return false;
         }
 

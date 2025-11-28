@@ -11,7 +11,7 @@ class OnboardingSessionStartRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->tokenCan('companies.manage_own');
     }
 
     /**
@@ -22,7 +22,7 @@ class OnboardingSessionStartRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'company_id' => 'required|string|ulid'
         ];
     }
 }

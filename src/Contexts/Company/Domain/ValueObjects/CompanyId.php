@@ -14,7 +14,7 @@ final class CompanyId
 
     private function validate(string $value): void
     {
-        if (! Ulid::isValid($value)) {
+        if (!Ulid::isValid($value)) {
             throw new \InvalidArgumentException('Invalid Company ID format.');
         }
     }

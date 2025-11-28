@@ -9,7 +9,9 @@ final class OnboardingSessionCurrentStep
         $this->validate(value: $value);
     }
 
-    private function validate(string $value): void {}
+    private function validate(string $value): void
+    {
+    }
 
     public function value(): string
     {

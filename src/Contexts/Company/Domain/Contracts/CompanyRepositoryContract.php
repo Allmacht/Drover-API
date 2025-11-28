@@ -10,6 +10,8 @@ use Src\Contexts\User\Domain\ValueObjects\UserId;
 
 interface CompanyRepositoryContract
 {
+    public function findById(CompanyId $companyId): ?Company;
+
     public function findByNameAndOwnerId(CompanyName $name, CompanyOwnerId $owner_id): ?Company;
 
     public function persist(Company $company): Company;

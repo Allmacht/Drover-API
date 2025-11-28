@@ -24,7 +24,8 @@ final readonly class OnboardingSession
         private OnboardingSessionMetadata $metadata,
         private OnboardingSessionCompletedAt $completed_at,
         private OnboardingSessionLastInteractionAt $last_interaction_at,
-    ) {}
+    ) {
+    }
 
     public function id(): OnboardingSessionId
     {
